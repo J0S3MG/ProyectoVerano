@@ -2,12 +2,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
 #region configuración de restapi y swagger
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 #endregion
+
 
 var app = builder.Build();
 
@@ -29,7 +29,6 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
 #region configuración swagger
 // Configure the HTTP request pipeline.
 //if (app.Environment.IsDevelopment()) //comentar para que corra en modo release
@@ -40,6 +39,5 @@ app.MapControllerRoute(
 
 app.MapControllers();
 #endregion
-
 
 app.Run();
