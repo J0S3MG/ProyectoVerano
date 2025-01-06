@@ -13,7 +13,7 @@ namespace WebApplication1.Services
           new Alumno(){Nom = "Laura", LU = 126, Id = 104, Nota = 10}
         };
 
-        public List<Alumno> GetAll()
+        public List<Alumno> GetAlumnos()
         {
             return alumnos.OrderBy(p => p.Id).ToList();
         }

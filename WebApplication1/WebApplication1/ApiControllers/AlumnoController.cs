@@ -15,7 +15,7 @@ namespace WebApplication1.ApiControllers
         [HttpGet("Mostrar Lista de Alumnos")]
         public IActionResult GetAlumnos()
         {
-            return Ok(servicio.GetAll());
+            return Ok(servicio.GetAlumnos());
         }
 
         // GET api/<AlumnoController>/5
