@@ -11,15 +11,15 @@ namespace WebApplication1.ApiControllers
     public class AlumnoController : ControllerBase
     {
         static AlumnoService servicio = new AlumnoService();
-        // GET: api/<AlumnoController>
-        [HttpGet("Mostrar Lista de Alumnos")]
+        
+        [HttpGet]
         public IActionResult GetAlumnos()
         {
             return Ok(servicio.GetAlumnos());
         }
 
-        // GET api/<AlumnoController>/5
-        [HttpGet("Mostrar Alumno")]
+       
+        [HttpGet("Mostrar Alumno {id}")]
         public IActionResult GetAlumno(int id)
         {
             Alumno a = servicio.Busq(id);
@@ -30,8 +30,8 @@ namespace WebApplication1.ApiControllers
             return NotFound("El alumno no existe");
         }
 
-        // POST api/<AlumnoController>
-        [HttpPost("Agregar Alumno")]
+      
+        [HttpPost("Agregar Alumno {value}")]
         public IActionResult PostAgregarAlumno([FromBody] Alumno value)
         {
             bool add = servicio.AddAlumno(value);
@@ -42,8 +42,8 @@ namespace WebApplication1.ApiControllers
             return BadRequest("Error al cargar el alumno");
         }
 
-        // PUT api/<AlumnoController>/5
-        [HttpPut("Modificar Alumno")]
+       
+        [HttpPut("Modificar Alumno {id} {value}")]
         public IActionResult PutAlumno(int id, [FromBody] Alumno value)
         {
             bool act = servicio.ModAlumno(id, value);
@@ -54,8 +54,8 @@ namespace WebApplication1.ApiControllers
             return NotFound("No se puede modificar");
         }
 
-        // DELETE api/<AlumnoController>/5
-        [HttpDelete("Borrar Alumno")]
+        
+        [HttpDelete("Borrar Alumno {id}")]
         public IActionResult DeleteAlumno(int id)
         {
             bool remove = servicio.DeleteAlumno(id);
