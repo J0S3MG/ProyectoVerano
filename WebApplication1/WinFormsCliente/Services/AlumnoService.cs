@@ -5,14 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using WinFormsCliente.Models;
 
-namespace WinFormsCliente.ClienteServices
+namespace WinFormsCliente.Services
 {
     public class AlumnoService
     {
         async public Task<List<Alumno>> GetAll()
         {
             List<Alumno> lista = new List<Alumno>();
-            string url = "http://localhost:8080/api/Alumno";
+            string url = "http://localhost:5038/api/Alumno";
 
             var Cliente = new HttpClient();
 

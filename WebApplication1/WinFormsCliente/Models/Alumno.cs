@@ -9,16 +9,16 @@ namespace WinFormsCliente.Models
 {
     public class Alumno
     {
-        [JsonPropertyName("nom")]
-        public string Nom { get; set; }
-
-        [JsonPropertyName("lu")]
-        public long LU { get; set; }
+        [JsonPropertyName("nombre")]
+        public string Nombre { get; set; }
 
         [JsonPropertyName("id")]
         public int Id { get; set; }
 
         [JsonPropertyName("nota")]
         public double Nota { get; set; }
+
+        [JsonPropertyName("lu")]
+        public int LU { get; set; }
     }
 }

@@ -1,5 +1,5 @@
-using WinFormsCliente.ClienteServices;
-using WinFormsCliente.Models;
+using System.Windows.Forms;
+using WinFormsCliente.Services;
 
 namespace WinFormsCliente
 {
@@ -10,14 +10,12 @@ namespace WinFormsCliente
             InitializeComponent();
         }
         AlumnoService servicio = new AlumnoService();
-                    //Task
-        private async void button1_Click(object sender, EventArgs e)
+        private async void btnListar_Click(object sender, EventArgs e)
         {
-            dataGridView1.Rows.Clear();
-            
-            foreach(var a in await servicio.GetAll())
+            dgViews.Rows.Clear();
+            foreach (var a in await servicio.GetAll())
             {
-                dataGridView1.Rows.Add(new object[] {a.Nom,a.Nota,a.LU,a.Id});
+                dgViews.Rows.Add(new object[] {a.Id,a.Nombre,a.Nota,a.LU });
             }
         }
     }

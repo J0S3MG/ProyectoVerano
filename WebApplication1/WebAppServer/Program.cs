@@ -29,15 +29,6 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-#region configuración swagger
-// Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment()) //comentar para que corra en modo release
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.MapControllers();
-#endregion
-
+app.UseSwagger();
+app.UseSwaggerUI();
 app.Run();
