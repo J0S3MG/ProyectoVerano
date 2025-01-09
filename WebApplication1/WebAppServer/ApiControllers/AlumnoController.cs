@@ -8,18 +8,18 @@ namespace WebAppServer.ApiControllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AlumnoController : ControllerBase
+    public class AlumnoController : ControllerBase //Creo un controlador que va a manejar los Response.
     {
-        static AlumnoService servicio = new AlumnoService();
+        static AlumnoService servicio = new AlumnoService();//Creo una instancia de AlumnoService.
 
-        [HttpGet]
-        public IActionResult GetListaAlumno()
+        [HttpGet]//Utilizo el IActionResult para poder usar los codigos de estado.
+        public IActionResult GetAll()
         {
-            var la = servicio.GetAll();
-            if (la != null)
+            var la = servicio.GetAll();//Llamo al metodo GetAll.
+            if (la != null)//Si devuelve distinto de null.
             {
-                return Ok(la);
-            }
+                return Ok(la);//Lanza un 200.
+            }//Sino lanza un 404.
             return NotFound("La Lista no Existe");
         }
 
@@ -27,43 +27,43 @@ namespace WebAppServer.ApiControllers
         public IActionResult GetById(int id)
         {
             var a = servicio.GetById(id);
-            if (a != null)
+            if (a != null)//Si devuelve distinto de null.
             {
-                return Ok(a);
-            }
+                return Ok(a);//Lanza un 200.
+            }//Sino lanza un 404.
             return NotFound("El Alumno no Existe");
         }
 
         [HttpPost]
-        public IActionResult PostAgregarAlumno([FromBody] Alumno a)
+        public IActionResult PostInsert([FromBody] Alumno a)
         {
             var b = servicio.Insert(a);
-            if (b == true)
+            if (b == true)//Si devuelve true.
             {
-                return Ok("Alumno Agregado Correctamente");
-            }
+                return Ok("Alumno Agregado Correctamente");//Lanza un 200.
+            }//Sino lanza un 400.
             return BadRequest("Fallo el Proceso");
         }
 
         [HttpPut("{id}")]
-        public IActionResult PutModificarAlumno(int id, [FromBody] Alumno a)
+        public IActionResult PutUpdate(int id, [FromBody] Alumno a)
         {
             var b = servicio.Update(id, a);
-            if (b == true)
+            if (b == true)//Si devuelve true.
             {
-                return Ok("Alumno Modificado Correctamente");
-            }
+                return Ok("Alumno Modificado Correctamente");//Lanza un 200.
+            }//Sino lanza un 400.
             return BadRequest("Fallo el Proceso");
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteAlumno(int id)
+        public IActionResult Delete(int id)
         {
             var b = servicio.Delete(id);
-            if (b == true)
+            if (b == true)//Si devuelve true.
             {
-                return Ok("Alumno Borrado Correctamente");
-            }
+                return Ok("Alumno Borrado Correctamente");//Lanza un 200.
+            }//Sino lanza un 400.
             return BadRequest("Fallo el Proceso");
         }
     }

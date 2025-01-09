@@ -29,21 +29,23 @@
         private void InitializeComponent()
         {
             dgViews = new DataGridView();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            btnListar = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            button5 = new Button();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
             Id = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
             Nota = new DataGridViewTextBoxColumn();
             LU = new DataGridViewTextBoxColumn();
+            tbxLU = new TextBox();
+            tbxNombre = new TextBox();
+            tbxNota = new TextBox();
+            btnListar = new Button();
+            btnAgregar = new Button();
+            btnBorrar = new Button();
+            btnBuscar = new Button();
+            btnActualizar = new Button();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            tbxID = new TextBox();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgViews).BeginInit();
             SuspendLayout();
             // 
@@ -51,105 +53,11 @@
             // 
             dgViews.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgViews.Columns.AddRange(new DataGridViewColumn[] { Id, Nombre, Nota, LU });
-            dgViews.Location = new Point(26, 189);
+            dgViews.Location = new Point(12, 110);
             dgViews.Name = "dgViews";
             dgViews.RowHeadersWidth = 51;
-            dgViews.Size = new Size(519, 210);
+            dgViews.Size = new Size(527, 220);
             dgViews.TabIndex = 0;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(265, 31);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(226, 27);
-            textBox1.TabIndex = 1;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(265, 89);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(226, 27);
-            textBox2.TabIndex = 2;
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(265, 134);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(226, 27);
-            textBox3.TabIndex = 3;
-            // 
-            // btnListar
-            // 
-            btnListar.Location = new Point(612, 110);
-            btnListar.Name = "btnListar";
-            btnListar.Size = new Size(85, 72);
-            btnListar.TabIndex = 4;
-            btnListar.Text = "Listar";
-            btnListar.UseVisualStyleBackColor = true;
-            btnListar.Click += btnListar_Click;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(601, 303);
-            button2.Name = "button2";
-            button2.Size = new Size(85, 72);
-            button2.TabIndex = 5;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            button3.Location = new Point(717, 366);
-            button3.Name = "button3";
-            button3.Size = new Size(85, 72);
-            button3.TabIndex = 6;
-            button3.Text = "button3";
-            button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            button4.Location = new Point(585, 213);
-            button4.Name = "button4";
-            button4.Size = new Size(85, 72);
-            button4.TabIndex = 7;
-            button4.Text = "button4";
-            button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            button5.Location = new Point(676, 265);
-            button5.Name = "button5";
-            button5.Size = new Size(85, 72);
-            button5.TabIndex = 8;
-            button5.Text = "button5";
-            button5.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(544, 40);
-            label1.Name = "label1";
-            label1.Size = new Size(50, 20);
-            label1.TabIndex = 9;
-            label1.Text = "label1";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(123, 49);
-            label2.Name = "label2";
-            label2.Size = new Size(50, 20);
-            label2.TabIndex = 10;
-            label2.Text = "label2";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(137, 110);
-            label3.Name = "label3";
-            label3.Size = new Size(50, 20);
-            label3.TabIndex = 11;
-            label3.Text = "label3";
             // 
             // Id
             // 
@@ -179,22 +87,135 @@
             LU.Name = "LU";
             LU.Width = 125;
             // 
+            // tbxLU
+            // 
+            tbxLU.Location = new Point(234, 57);
+            tbxLU.Name = "tbxLU";
+            tbxLU.Size = new Size(91, 27);
+            tbxLU.TabIndex = 1;
+            // 
+            // tbxNombre
+            // 
+            tbxNombre.Location = new Point(99, 16);
+            tbxNombre.Name = "tbxNombre";
+            tbxNombre.Size = new Size(226, 27);
+            tbxNombre.TabIndex = 2;
+            // 
+            // tbxNota
+            // 
+            tbxNota.Location = new Point(102, 57);
+            tbxNota.Name = "tbxNota";
+            tbxNota.Size = new Size(91, 27);
+            tbxNota.TabIndex = 3;
+            // 
+            // btnListar
+            // 
+            btnListar.Location = new Point(554, 24);
+            btnListar.Name = "btnListar";
+            btnListar.Size = new Size(85, 72);
+            btnListar.TabIndex = 4;
+            btnListar.Text = "Listar";
+            btnListar.UseVisualStyleBackColor = true;
+            btnListar.Click += btnListar_Click;
+            // 
+            // btnAgregar
+            // 
+            btnAgregar.Location = new Point(554, 258);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(85, 72);
+            btnAgregar.TabIndex = 5;
+            btnAgregar.Text = "Agregar Alumno";
+            btnAgregar.UseVisualStyleBackColor = true;
+            // 
+            // btnBorrar
+            // 
+            btnBorrar.Location = new Point(554, 102);
+            btnBorrar.Name = "btnBorrar";
+            btnBorrar.Size = new Size(85, 72);
+            btnBorrar.TabIndex = 6;
+            btnBorrar.Text = "Borrar Alumno";
+            btnBorrar.UseVisualStyleBackColor = true;
+            // 
+            // btnBuscar
+            // 
+            btnBuscar.Location = new Point(463, 24);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(85, 72);
+            btnBuscar.TabIndex = 7;
+            btnBuscar.Text = "Buscar Alumno";
+            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += btnBuscar_Click;
+            // 
+            // btnActualizar
+            // 
+            btnActualizar.Location = new Point(554, 180);
+            btnActualizar.Name = "btnActualizar";
+            btnActualizar.Size = new Size(85, 72);
+            btnActualizar.TabIndex = 8;
+            btnActualizar.Text = "Actualizar Alumno";
+            btnActualizar.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(199, 57);
+            label1.Name = "label1";
+            label1.Size = new Size(29, 20);
+            label1.TabIndex = 9;
+            label1.Text = "LU:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(26, 16);
+            label2.Name = "label2";
+            label2.Size = new Size(67, 20);
+            label2.TabIndex = 10;
+            label2.Text = "Nombre:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(48, 57);
+            label3.Name = "label3";
+            label3.Size = new Size(45, 20);
+            label3.TabIndex = 11;
+            label3.Text = "Nota:";
+            // 
+            // tbxID
+            // 
+            tbxID.Location = new Point(353, 57);
+            tbxID.Name = "tbxID";
+            tbxID.Size = new Size(91, 27);
+            tbxID.TabIndex = 12;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(353, 34);
+            label4.Name = "label4";
+            label4.Size = new Size(27, 20);
+            label4.TabIndex = 13;
+            label4.Text = "ID:";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(651, 342);
+            Controls.Add(label4);
+            Controls.Add(tbxID);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(button5);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
+            Controls.Add(btnActualizar);
+            Controls.Add(btnBuscar);
+            Controls.Add(btnBorrar);
+            Controls.Add(btnAgregar);
             Controls.Add(btnListar);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(tbxNota);
+            Controls.Add(tbxNombre);
+            Controls.Add(tbxLU);
             Controls.Add(dgViews);
             Name = "Form1";
             Text = "Form1";
@@ -206,14 +227,14 @@
         #endregion
 
         private DataGridView dgViews;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
+        private TextBox tbxLU;
+        private TextBox tbxNombre;
+        private TextBox tbxNota;
         private Button btnListar;
-        private Button button2;
-        private Button button3;
-        private Button button4;
-        private Button button5;
+        private Button btnAgregar;
+        private Button btnBorrar;
+        private Button btnBuscar;
+        private Button btnActualizar;
         private Label label1;
         private Label label2;
         private Label label3;
@@ -221,5 +242,7 @@
         private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn Nota;
         private DataGridViewTextBoxColumn LU;
+        private TextBox tbxID;
+        private Label label4;
     }
 }
