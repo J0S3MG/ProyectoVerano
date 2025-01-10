@@ -19,9 +19,17 @@ namespace WinFormsCliente.Models
         public int Id { get; set; }
 
         [JsonPropertyName("nota")]//Con esta etiqueta indicamos la propiedad a la que pertenece esta clave.
-        public double Nota { get; set; }
+        public decimal Nota { get; set; }
 
         [JsonPropertyName("lu")]//Con esta etiqueta indicamos la propiedad a la que pertenece esta clave.
         public int LU { get; set; }
+
+        public Alumno() { }
+        public Alumno(int LU,decimal nota, string nom)
+        {
+            this.LU = LU;
+            this.Nota = nota;
+            Nombre = nom;
+        }
     }
 }

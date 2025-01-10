@@ -37,34 +37,34 @@ namespace WebAppServer.ApiControllers
         [HttpPost]
         public IActionResult PostInsert([FromBody] Alumno a)
         {
-            var b = servicio.Insert(a);
-            if (b == true)//Si devuelve true.
+            var a2 = servicio.Insert(a);
+            if (a2 != null)//Si devuelve true.
             {
-                return Ok("Alumno Agregado Correctamente");//Lanza un 200.
+                return Ok(a2);//Lanza un 200.
             }//Sino lanza un 400.
-            return BadRequest("Fallo el Proceso");
+            return BadRequest(new { msj = "Fallo el Proceso" });
         }
 
-        [HttpPut("{id}")]
-        public IActionResult PutUpdate(int id, [FromBody] Alumno a)
+        [HttpPut]
+        public IActionResult PutUpdate( [FromBody] Alumno a)
         {
-            var b = servicio.Update(id, a);
-            if (b == true)//Si devuelve true.
+            var a2 = servicio.Update(a);
+            if (a2 != null)//Si devuelve true.
             {
-                return Ok("Alumno Modificado Correctamente");//Lanza un 200.
+                return Ok(a2);//Lanza un 200.
             }//Sino lanza un 400.
-            return BadRequest("Fallo el Proceso");
+            return BadRequest(new {msj = "Fallo el Proceso"});
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var b = servicio.Delete(id);
-            if (b == true)//Si devuelve true.
+            var a = servicio.Delete(id);
+            if (a != null)//Si devuelve true.
             {
-                return Ok("Alumno Borrado Correctamente");//Lanza un 200.
+                return Ok(a);//Lanza un 200.
             }//Sino lanza un 400.
-            return BadRequest("Fallo el Proceso");
+            return BadRequest(new {msj = "Fallo el Proceso" });
         }
     }
 }

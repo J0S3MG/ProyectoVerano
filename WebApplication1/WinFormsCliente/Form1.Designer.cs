@@ -126,6 +126,7 @@
             btnAgregar.TabIndex = 5;
             btnAgregar.Text = "Agregar Alumno";
             btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnAgregar_Click;
             // 
             // btnBorrar
             // 
@@ -135,6 +136,7 @@
             btnBorrar.TabIndex = 6;
             btnBorrar.Text = "Borrar Alumno";
             btnBorrar.UseVisualStyleBackColor = true;
+            btnBorrar.Click += btnBorrar_Click;
             // 
             // btnBuscar
             // 
@@ -154,6 +156,7 @@
             btnActualizar.TabIndex = 8;
             btnActualizar.Text = "Actualizar Alumno";
             btnActualizar.UseVisualStyleBackColor = true;
+            btnActualizar.Click += btnActualizar_Click;
             // 
             // label1
             // 
