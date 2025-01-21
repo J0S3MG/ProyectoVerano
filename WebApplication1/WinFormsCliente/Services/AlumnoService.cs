@@ -49,24 +49,7 @@ namespace WinFormsCliente.Services
             return a;//Retornamos el alumno.
         }
         #endregion
-        #region Caso Delete.
-        public async Task<Alumno> Delete(int id)//El Delete tiene una estructura similar al caso anterior.
-        {
-            Alumno a = new Alumno();
-            string url = "http://localhost:5038/api/Alumno";
-
-            var Cliente = new HttpClient();
-            var response = await Cliente.DeleteAsync($"{url}/{id}");//Aca en vez de utilizar el metodo GetAsync usamos el DeleteAsync.
-
-            if(response.IsSuccessStatusCode)//Chequeamos el codigo de estado de la respuesta.
-            {
-                string json = await response.Content.ReadAsStringAsync();//Extraemos el Json.
-                a = JsonSerializer.Deserialize<Alumno>(json);//Deserealizamos el Json.
-            }
-            return a;//Retornamos el alumno eliminado.
-        }
-        #endregion
-        #region Caso PostInsert.
+        #region Caso Insert.
         public async Task<Alumno> Insert(int id, int LU, decimal nota,string nombre)//Le pasamos los datos del nuevo alumno.
         {
             Alumno a2 = new Alumno();//Creamos la variable que recibira el Json.
@@ -89,11 +72,11 @@ namespace WinFormsCliente.Services
             return a2;
 
         }
-        #endregion
-        #region Caso PutUpdate.
+        #endregion-
+        #region Caso Update.
         public async Task<Alumno> Update(int id, int lu, decimal nota, string nombre)//Le pasamos los datos del alumno modificado.
         {
-            Alumno a2 = new Alumno();//Creamos la variable que recibira el Json.
+            Alumno a2 = null;//Creamos la variable que recibira el Json.
             Alumno a = new Alumno(lu, nota, nombre);//Creamos el obj modificado.
             a.Id = id;
 
@@ -108,11 +91,26 @@ namespace WinFormsCliente.Services
             if (response.IsSuccessStatusCode)//Chequeamos el codigo de estado del Response.
             {
                 string json = await response.Content.ReadAsStringAsync();//Extraemos el Json.
-                a2 = JsonSerializer.Deserialize<Alumno>(json);//Deserealizamos el Json.
+                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                a2 = JsonSerializer.Deserialize<Alumno>(json,options);//Deserealizamos el Json.
             }
             return a2;
         }
         #endregion
+        #region Caso Delete.
+        public async Task<bool> Delete(int id)//El Delete tiene una estructura similar al caso anterior.
+        {
+            string url = "http://localhost:5038/api/Alumno";
 
+            var Cliente = new HttpClient();
+            var response = await Cliente.DeleteAsync($"{url}/{id}");//Aca en vez de utilizar el metodo GetAsync usamos el DeleteAsync.
+
+            if (response.IsSuccessStatusCode)//Chequeamos el codigo de estado de la respuesta.
+            {
+               return true;
+            }
+            return false;
+        }
+        #endregion
     }
 }

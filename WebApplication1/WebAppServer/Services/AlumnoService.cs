@@ -20,48 +20,39 @@ namespace WebAppServer.Services
         AlumnoSQLServerDAL alumnoDAO;
         public AlumnoService()
         {
-             alumnoDAO = new AlumnoSQLServerDAL(conexionSQL);
+            alumnoDAO = new AlumnoSQLServerDAL(conexionSQL);
         }
+        #region Caso GetAll.
         public List<Alumno> GetAll()//Este metodo nos devuelve la lista ordenada por nota.
         {
             return alumnoDAO.GetAll();
         }
-        public Alumno GetById(int id)//Nos devuelve un alumno especifico, lo busca por la LU
+        #endregion
+        #region Caso GetById.
+        public Alumno? GetById(int id)//Nos devuelve un alumno especifico.
         {
-            var a = alumnos.Where(a2 => a2.Id == id).FirstOrDefault();//Exprecion Lambda.
-            if (a != null) return a;
-            return null;
+            return alumnoDAO.GetById(id);
+           
         }
-        public Alumno Insert(Alumno a)//Inserta un alumno a la lista.
+        #endregion
+        #region Caso Insert.
+        public Alumno? Insert(Alumno a)//Inserta un alumno a la lista.
         {
-            if(a != null)
-            {
-                alumnos.Add(a);
-                return a;
-            }
-            return null;
+            return alumnoDAO.Insert(a);
+          
         }
-        public Alumno Update(Alumno a)//Actualiza los datos de un alumno, menos el ID.
+        #endregion
+        #region Caso Update.
+        public bool Update(Alumno a)//Actualiza los datos de un alumno, menos el ID.
         {
-            var a2 = GetById(a.Id);
-            if (a2 != null)
-            {
-                a2.Nombre = a.Nombre;
-                a2.Nota = a.Nota;
-                a2.LU = a.LU;
-                return a2;
-            }
-            return null;
+            return alumnoDAO.Update(a);
         }
-        public Alumno Delete(int id)//Borra un alumno de la lista.
+        #endregion
+        #region Caso Delete.
+        public bool Delete(int id)//Borra un alumno de la lista.
         {
-            var a = GetById(id);
-            if (a != null)
-            {
-                alumnos.Remove(a);
-                return a;
-            }
-            return null;
+            return alumnoDAO.Delete(id);
         }
+        #endregion
     }
 }
