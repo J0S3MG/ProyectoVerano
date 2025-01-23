@@ -10,21 +10,32 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-black border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebAppServer</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Alumno" asp-action="Layout">WebAppServer</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="btn btn-outline-primary" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="btn btn-outline-secondary" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="btn btn-outline-success" href="http://localhost:5038/swagger/index.html">Swagger</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-outline-danger" href="http://localhost:5038/Alumno/GetAll">Listar</a>
+                        </li>
+                          <li class="nav-item">
+                            <a class="btn btn-outline-warning" href="http://localhost:5038/Alumno/Insert">Agregar</a>
+                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -35,7 +46,9 @@
             @RenderBody()
         </main>
     </div>
-
+    <div class="text-center">
+    <img src="~/img/Log.png" alt="Descripción de la imagen">
+    </div>
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2025 - WebAppServer - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>

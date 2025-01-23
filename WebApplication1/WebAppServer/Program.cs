@@ -28,7 +28,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Alumno}/{action=Layout}/{id?}");
 app.UseSwagger();
 app.UseSwaggerUI();
 app.Run();
