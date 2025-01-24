@@ -67,7 +67,8 @@ namespace WebAppServer.ApiControllers
                 return NotFound(new { Message = "Alumno no encontrado" });
             }
             return NoContent();//204
-            #endregion
+           
         }
+        #endregion
     }
 }

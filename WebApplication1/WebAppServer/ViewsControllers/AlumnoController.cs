@@ -8,15 +8,6 @@ namespace WebAppServer.ViewsControllers
 {
     public class AlumnoController : Controller
     {
-        #region Sin Persistencia.
-        List<Alumno> alumnos = new List<Alumno>()//Creamos una lista harcodeada de alumnos.
-        {
-            new Alumno(){Nombre = "Juan",Id = 1,Nota = 10,LU = 100},
-            new Alumno(){Nombre = "Julian",Id = 2,Nota = 5,LU = 101},
-            new Alumno(){Nombre = "Juana",Id = 3,Nota = 8,LU = 102},
-            new Alumno(){Nombre = "Julio",Id = 4,Nota = 9.5m,LU = 103}
-        };
-        #endregion 
         static AlumnoService servicio = new AlumnoService();
         public ActionResult Layout()
         {
@@ -24,19 +15,21 @@ namespace WebAppServer.ViewsControllers
         }
         #region Caso GetAll.
         // GET: AlumnoController
-        public ActionResult GetAll()//Parecido al metodo del RestAPI pero devuelve un HTML.
+        public ActionResult Index()//Parecido al metodo del RestAPI pero devuelve un HTML.
         {
             return View(servicio.GetAll());//Trae el HTML con el codigo cargado.
         }
         #endregion
-        /*/ GET: AlumnoController/Details/5
+        #region Caso GetById.
+        // GET: AlumnoController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
-        }*/
-        #region Caso Insert
+            return View(servicio.GetById(id));
+        }
+        #endregion
+        #region Caso Insert.
         // GET: AlumnoController/Create
-        public ActionResult Insert()
+        public ActionResult Create()
         {
             return View();
         }
@@ -44,7 +37,7 @@ namespace WebAppServer.ViewsControllers
         // POST: AlumnoController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Insert(Alumno a)
+        public ActionResult Create(Alumno a)
         {
             try
             {
@@ -57,46 +50,51 @@ namespace WebAppServer.ViewsControllers
             }
         }
         #endregion
-        /*/ GET: AlumnoController/Edit/5
+        #region Caso Update.
+        // GET: AlumnoController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(servicio.GetById(id));
         }
 
         // POST: AlumnoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(Alumno a)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                servicio.Update(a);
+                return RedirectToAction(nameof(Layout));
             }
             catch
             {
                 return View();
             }
         }
-
+        #endregion
+        #region Caso Delete.
         // GET: AlumnoController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(servicio.GetById(id));
         }
 
         // POST: AlumnoController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(Alumno a)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                servicio.Delete(a.Id);
+                return RedirectToAction(nameof(Layout));
             }
             catch
             {
                 return View();
             }
-        }*/
+        }
+        #endregion
     }
 }
